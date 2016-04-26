@@ -25,6 +25,7 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected RecyclerView.Adapter adapter;
     protected LinearLayoutManager mLayoutManager;
     protected BaseDailyPresenter dailyPresenter;
+    protected String mCategory;
 
 
     @Nullable

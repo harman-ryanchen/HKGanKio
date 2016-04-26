@@ -9,19 +9,19 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ryan.hkgankio.R;
+import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by studio02 on 4/25/16.
  */
-public class DailyNewsListAdapter extends BaseDailyListAdapter<StoriesBean, DailyNewsListAdapter.ViewHolder> {
+public class DailyHotNewsListAdapter extends BaseDailyListAdapter<HotnewBean.RecentBean, DailyHotNewsListAdapter.ViewHolder> {
 
 
-    public DailyNewsListAdapter(List<StoriesBean> mItems, Context mContext) {
+    public DailyHotNewsListAdapter(List<HotnewBean.RecentBean> mItems, Context mContext) {
         super(mItems, mContext);
     }
 
@@ -34,6 +34,7 @@ public class DailyNewsListAdapter extends BaseDailyListAdapter<StoriesBean, Dail
         vh.parentView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
             }
         });
         return vh;
@@ -41,9 +42,9 @@ public class DailyNewsListAdapter extends BaseDailyListAdapter<StoriesBean, Dail
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        StoriesBean sb = mItems.get(position);
+        HotnewBean.RecentBean sb = mItems.get(position);
         holder.news_content.setText(sb.getTitle());
-        holder.news_image.setImageURI(Uri.parse(sb.getImages().get(0)));
+        holder.news_image.setImageURI(Uri.parse(sb.getThumbnail()));
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

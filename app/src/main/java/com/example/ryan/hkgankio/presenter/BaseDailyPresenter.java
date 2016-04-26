@@ -9,5 +9,8 @@ import java.util.List;
  */
 public interface BaseDailyPresenter {
 
-    void loadDailyData(String item);
+    void loadDailyNewsData();
+    void loadDailyHotNewsData();
+    void loadDailyThemesData();
+    void loadDailyColumnData();
 }

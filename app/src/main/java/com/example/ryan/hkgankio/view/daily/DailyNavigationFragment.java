@@ -28,7 +28,7 @@ public class DailyNavigationFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = View.inflate(getContext(), R.layout.layout_top_navigation,null);
         viewPager = (ViewPager) parentView.findViewById(R.id.inner_viewpager);
-        smartTabLayout = (SmartTabLayout) parentView.findViewById(R.id.viewpagertab);
+        smartTabLayout = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
         smartTabLayout.setVisibility(View.VISIBLE);
         pagerAdapter = initPagerAdapter();
         viewPager.setAdapter(pagerAdapter);
@@ -55,8 +55,10 @@ public class DailyNavigationFragment extends Fragment{
             fragment = new DailyNewsFragment();
         }else if (item.equals("Hot")){
             fragment = new DailyHotsFragment();
-        }else{
-            fragment = new DailyHotsFragment();
+        }else if (item.equals("Column")){
+            fragment = new DailyColumnsFragment();
+        }else if (item.equals("Themes")){
+            fragment = new DailyThemesFragment();
         }
         return fragment;
     }

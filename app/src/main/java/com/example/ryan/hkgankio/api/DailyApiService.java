@@ -1,7 +1,10 @@
 package com.example.ryan.hkgankio.api;
 
+import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StartImageBean;
+import com.example.ryan.hkgankio.bean.ThemeBean;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,7 +26,15 @@ public interface DailyApiService {
 
     //http://news-at.zhihu.com/api/3/news/hot
     @GET("/api/3/news/hot")
-    Call<DailyNewsBean> getHotNews();
+    Call<HotnewBean> getHotNews();
+
+    //http://news-at.zhihu.com/api/4/themes
+    @GET("/api/4/themes")
+    Call<ThemeBean> getDailyThemes();
+
+    //http://news-at.zhihu.com/api/3/sections
+    @GET("/api/3/sections")
+    Call<ColumnBean> getDailysections();
 
 
     //http://news.at.zhihu.com/api/4/news/before/20131119

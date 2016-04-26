@@ -6,23 +6,20 @@ import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
-import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
-import com.example.ryan.hkgankio.bean.TopStoriesBean;
 import com.example.ryan.hkgankio.presenter.BaseDailyPresenter;
 import com.example.ryan.hkgankio.presenter.DailyPresenter;
-import com.example.ryan.hkgankio.support.DailyNewsListAdapter;
+import com.example.ryan.hkgankio.support.DailyColumnsListAdapter;
+import com.example.ryan.hkgankio.support.DailyThemesListAdapter;
 
 import java.util.List;
 
 /**
- * Created by ryan on 4/23/16.
+ * Created by studio02 on 4/25/16.
  */
-public class DailyNewsFragment extends DailyBaseListFragment implements IBaseDailyFragment{
-    private String mUrl;
-    private List<StoriesBean> storiesBeens;
-    private List<TopStoriesBean> topStoriesBeen;
+public class DailyColumnsFragment extends DailyBaseListFragment implements IBaseDailyFragment{
 
+    private List<ColumnBean.DataBean> columnBean;
     @Override
     BaseDailyPresenter createPresenter() {
         return  new DailyPresenter(this);
@@ -35,23 +32,17 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IBaseDai
 
     @Override
     void loadData() {
-        dailyPresenter.loadDailyNewsData();
+        dailyPresenter.loadDailyColumnData();
     }
 
     @Override
     RecyclerView.Adapter bindAdapter() {
-        return new DailyNewsListAdapter(storiesBeens,getContext());
+        return new DailyColumnsListAdapter(columnBean,getContext());
     }
-
 
     @Override
     public void onLoadNewsResult(DailyNewsBean newsBean) {
-        hideProgressBar();
-        if (newsBean==null)return;
-        this.storiesBeens = newsBean.getStories();
-        this.topStoriesBeen = newsBean.getTop_stories();
-        adapter = bindAdapter();
-        recyclerView.setAdapter(adapter);
+
     }
 
     @Override
@@ -61,7 +52,11 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IBaseDai
 
     @Override
     public void onLoadColumnsResult(ColumnBean columnBean) {
-
+        hideProgressBar();
+        if (columnBean==null)return;
+        this.columnBean = columnBean.getData();
+        adapter = bindAdapter();
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

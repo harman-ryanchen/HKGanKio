@@ -1,7 +1,10 @@
 package com.example.ryan.hkgankio.model;
 
+import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StoriesBean;
+import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.listeners.BaseMultiLoadedListener;
 
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
  */
 public interface BaseDailyModel {
     void loadDailyNews(BaseMultiLoadedListener<DailyNewsBean> newsBeanBaseMultiLoadedListener);
-    void loadDailyHotsNews();
-    void loadDailyStartImage();
-    void loadBeforeNews();
+    void loadDailyHotsNews(BaseMultiLoadedListener<HotnewBean> newsBeanBaseMultiLoadedListener);
+    void loadDailyThemes(BaseMultiLoadedListener<ThemeBean> newsBeanBaseMultiLoadedListener);
+    void loadDailyColumn(BaseMultiLoadedListener<ColumnBean> newsBeanBaseMultiLoadedListener);
 }
