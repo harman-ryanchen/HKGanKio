@@ -9,4 +9,5 @@
     <!--daily -->
     <string name="argument_url_id">argument_url_id</string>
     <string name="argument_item_id">argument_item_id</string>
+    <string name="argument_web_url">argument_web_url</string>
 </resources>

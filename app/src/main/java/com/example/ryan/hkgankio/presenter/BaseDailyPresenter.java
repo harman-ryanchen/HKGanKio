@@ -13,4 +13,5 @@ public interface BaseDailyPresenter {
     void loadDailyHotNewsData();
     void loadDailyThemesData();
     void loadDailyColumnData();
+    void loadDailyDetailData(String url);
 }

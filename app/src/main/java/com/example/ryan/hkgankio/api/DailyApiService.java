@@ -2,6 +2,7 @@ package com.example.ryan.hkgankio.api;
 
 import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StartImageBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
@@ -41,6 +42,10 @@ public interface DailyApiService {
     @GET("/api/4/news/before/{date}")
     Call<DailyNewsBean> getBeforeNews(@Path("beforedate") String beforedate );
 
+
+    //http://news-at.zhihu.com/api/4/news/3892357
+    @GET("{url}")
+    Call<DailyWebBean> getDetailBean(@Path("url") String url );
 
 
 }

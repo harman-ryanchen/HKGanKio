@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.presenter.BaseDailyPresenter;
@@ -62,5 +63,10 @@ public class DailyThemesFragment extends DailyBaseListFragment implements IBaseD
         this.themeBeen = themeBean.getOthers();
         adapter = bindAdapter();
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onLoadWebDetailResult(DailyWebBean dailyWebBean) {
+
     }
 }

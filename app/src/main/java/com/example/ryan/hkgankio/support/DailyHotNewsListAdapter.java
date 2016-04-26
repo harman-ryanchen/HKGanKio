@@ -1,6 +1,7 @@
 package com.example.ryan.hkgankio.support;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StoriesBean;
+import com.example.ryan.hkgankio.common.HKCommon;
+import com.example.ryan.hkgankio.view.daily.WebViewUrlActivty;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -31,20 +34,22 @@ public class DailyHotNewsListAdapter extends BaseDailyListAdapter<HotnewBean.Rec
         View item_layout = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_daily_news_adapter, parent, false);
         ViewHolder vh = new ViewHolder(item_layout);
-        vh.parentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        HotnewBean.RecentBean sb = mItems.get(position);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        final HotnewBean.RecentBean sb = mItems.get(position);
         holder.news_content.setText(sb.getTitle());
         holder.news_image.setImageURI(Uri.parse(sb.getThumbnail()));
+        holder.parentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, WebViewUrlActivty.class);
+                intent.putExtra(mContext.getString(R.string.argument_web_url), sb.getUrl());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

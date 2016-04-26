@@ -3,6 +3,7 @@ package com.example.ryan.hkgankio.model;
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.common.HKCommon;
@@ -78,6 +79,22 @@ public class DailyModel implements BaseDailyModel {
 
             @Override
             public void onFailure(Call<ColumnBean> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void loadDailyDetail(String url, final BaseMultiLoadedListener<DailyWebBean> newsBeanBaseMultiLoadedListener) {
+        DailyApiService dailyApiService = HttpMrg.getInstance().initRetrofit("", DailyApiService.class);
+        dailyApiService.getDetailBean(url).enqueue(new Callback<DailyWebBean>() {
+            @Override
+            public void onResponse(Call<DailyWebBean> call, Response<DailyWebBean> response) {
+                newsBeanBaseMultiLoadedListener.onSuccess(response.code(), response.body());
+            }
+
+            @Override
+            public void onFailure(Call<DailyWebBean> call, Throwable t) {
 
             }
         });

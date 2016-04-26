@@ -4,6 +4,7 @@ import android.util.ArrayMap;
 
 import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.listeners.BaseMultiLoadedListener;
@@ -91,6 +92,26 @@ public class DailyPresenter implements BaseDailyPresenter{
             @Override
             public void onSuccess(int event_tag, ColumnBean data) {
                 iBaseDailyFragment.onLoadColumnsResult(data);
+            }
+
+            @Override
+            public void onError(String msg) {
+
+            }
+
+            @Override
+            public void onException(String msg) {
+
+            }
+        });
+    }
+
+    @Override
+    public void loadDailyDetailData(String url) {
+        baseDailyModel.loadDailyDetail(url, new BaseMultiLoadedListener<DailyWebBean>() {
+            @Override
+            public void onSuccess(int event_tag, DailyWebBean data) {
+                iBaseDailyFragment.onLoadWebDetailResult(data);
             }
 
             @Override
