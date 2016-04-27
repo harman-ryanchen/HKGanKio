@@ -13,7 +13,11 @@ import android.widget.ProgressBar;
 
 import com.example.ryan.hkgankio.HKApplication;
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.presenter.BaseDailyPresenter;
+import com.example.ryan.hkgankio.api.DailyApiService;
+import com.example.ryan.hkgankio.common.HKCommon;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by studio02 on 4/25/16.
@@ -24,8 +28,9 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected RecyclerView recyclerView;
     protected RecyclerView.Adapter adapter;
     protected LinearLayoutManager mLayoutManager;
-    protected BaseDailyPresenter dailyPresenter;
     protected String mCategory;
+    protected String mUrl;
+    protected DailyApiService apiService;
 
 
     @Nullable
@@ -33,15 +38,19 @@ public abstract class DailyBaseListFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_daily, container, false);
         progressBar = (ProgressBar) mRootView.findViewById(R.id.progressbar);
-        showProgressBar();
-        getArg();
-        dailyPresenter = createPresenter();
-        loadData();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(HKCommon.daily_base_api)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        apiService = retrofit.create(DailyApiService.class);
         recyclerView = (RecyclerView) mRootView.findViewById(R.id.recyclerView);
-
         mLayoutManager = new LinearLayoutManager(HKApplication.AppContext);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
+        showProgressBar();
+        getArg();
+        loadData();
+
         return mRootView;
     }
     protected void showProgressBar(){
@@ -50,7 +59,6 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
-    abstract BaseDailyPresenter createPresenter();
     abstract void getArg();
     abstract void loadData();
     abstract RecyclerView.Adapter bindAdapter();

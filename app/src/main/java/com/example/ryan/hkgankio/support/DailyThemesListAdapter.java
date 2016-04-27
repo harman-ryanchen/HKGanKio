@@ -3,6 +3,7 @@ package com.example.ryan.hkgankio.support;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,12 @@ public class DailyThemesListAdapter extends BaseDailyListAdapter<ThemeBean.Other
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, WebViewUrlActivty.class);
-                intent.putExtra(mContext.getString(R.string.argument_web_url), HKCommon.daily_base_theme_api+getItem(position).getId());
+                //    http://news-at.zhihu.com/api/4/theme/11
+                Bundle bundle = new Bundle();
+                bundle.putString(HKCommon.argument_detail_url_num,HKCommon.argument_detail_url_num_4);
+                bundle.putString(HKCommon.argument_detail_url_section,HKCommon.argument_detail_url_section_theme);
+                bundle.putInt(HKCommon.argument_detail_url_id,getItem(position).getId());
+                intent.putExtras(bundle);
                 mContext.startActivity(intent);
             }
         });

@@ -1,30 +1,24 @@
 package com.example.ryan.hkgankio.view.daily;
 
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.bean.ColumnBean;
-import com.example.ryan.hkgankio.bean.DailyNewsBean;
-import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
-import com.example.ryan.hkgankio.bean.ThemeBean;
-import com.example.ryan.hkgankio.presenter.BaseDailyPresenter;
-import com.example.ryan.hkgankio.presenter.DailyPresenter;
 import com.example.ryan.hkgankio.support.DailyHotNewsListAdapter;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 /**
  * Created by studio02 on 4/25/16.
  */
-public class DailyHotsFragment extends DailyBaseListFragment implements IBaseDailyFragment{
+public class DailyHotsFragment extends DailyBaseListFragment{
 
     private List<HotnewBean.RecentBean> recentBeen;
-    @Override
-    BaseDailyPresenter createPresenter() {
-        return  new DailyPresenter(this);
-    }
-
     @Override
     void getArg() {
         mCategory =  getArguments().getString(getString(R.string.argument_item_id));
@@ -32,40 +26,23 @@ public class DailyHotsFragment extends DailyBaseListFragment implements IBaseDai
 
     @Override
     void loadData() {
-        dailyPresenter.loadDailyHotNewsData();
+        apiService.getHotNews().enqueue(new Callback<HotnewBean>() {
+            @Override
+            public void onResponse(Call<HotnewBean> call, Response<HotnewBean> response) {
+                hideProgressBar();
+                recentBeen = response.body().getRecent();
+                recyclerView.setAdapter(bindAdapter());
+            }
+
+            @Override
+            public void onFailure(Call<HotnewBean> call, Throwable t) {
+                Toast.makeText(getContext(),"Load data error",Toast.LENGTH_SHORT);
+            }
+        });
     }
 
     @Override
     RecyclerView.Adapter bindAdapter() {
         return new DailyHotNewsListAdapter(recentBeen,getContext());
-    }
-
-    @Override
-    public void onLoadNewsResult(DailyNewsBean newsBean) {
-
-    }
-
-    @Override
-    public void onLoadHotNewsResult(HotnewBean hotnewBean) {
-        hideProgressBar();
-        if (hotnewBean==null)return;
-        this.recentBeen = hotnewBean.getRecent();
-        adapter = bindAdapter();
-        recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onLoadColumnsResult(ColumnBean columnBean) {
-
-    }
-
-    @Override
-    public void onLoadThemesResult(ThemeBean themeBean) {
-
-    }
-
-    @Override
-    public void onLoadWebDetailResult(DailyWebBean dailyWebBean) {
-
     }
 }

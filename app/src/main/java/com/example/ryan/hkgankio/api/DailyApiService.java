@@ -44,8 +44,13 @@ public interface DailyApiService {
 
 
     //http://news-at.zhihu.com/api/4/news/3892357
-    @GET("{url}")
-    Call<DailyWebBean> getDetailBean(@Path("url") String url );
+//    @GET("/{parameter}")
+//    Call<DailyWebBean> getDetailBean(@Path("parameter") String parameter);
 
+    @GET("api/{num}/{section}/{id}")
+    Call<DailyWebBean> getDetailBean(@Path("num") String num,@Path("section") String section,@Path("id") int id);
 
+//    http://news-at.zhihu.com/api/4/theme/11
+
+//    http://news-at.zhihu.com/api/3/section/1
 }
