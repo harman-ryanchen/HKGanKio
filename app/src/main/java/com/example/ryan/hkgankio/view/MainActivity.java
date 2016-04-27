@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio;
+package com.example.ryan.hkgankio.view;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 
 public class MainActivity extends AppCompatActivity

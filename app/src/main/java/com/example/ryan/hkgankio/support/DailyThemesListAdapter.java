@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.common.HKCommon;
-import com.example.ryan.hkgankio.view.daily.WebViewUrlActivty;
+import com.example.ryan.hkgankio.view.WebViewUrlActivty;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;

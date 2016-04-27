@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio.view.daily;
+package com.example.ryan.hkgankio.view;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.common.HKCommon;
-import com.orhanobut.logger.Logger;
 
 import retrofit2.Call;
 import retrofit2.Callback;
