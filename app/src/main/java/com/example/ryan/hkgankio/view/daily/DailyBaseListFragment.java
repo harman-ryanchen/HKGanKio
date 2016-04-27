@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.example.ryan.hkgankio.HKApplication;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.api.DailyApiService;
@@ -31,6 +33,8 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected String mCategory;
     protected String mUrl;
     protected DailyApiService apiService;
+    protected LinearLayout contentLayout;
+    protected ConvenientBanner convenientBanner;
 
 
     @Nullable
@@ -38,6 +42,8 @@ public abstract class DailyBaseListFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_daily, container, false);
         progressBar = (ProgressBar) mRootView.findViewById(R.id.progressbar);
+        contentLayout = (LinearLayout) mRootView.findViewById(R.id.content_layout);
+        convenientBanner = (ConvenientBanner) mRootView.findViewById(R.id.convenientBanner);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HKCommon.daily_base_api)
                 .addConverterFactory(GsonConverterFactory.create())
