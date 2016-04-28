@@ -28,7 +28,7 @@ public class DailyNavigationFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         parentView = View.inflate(getContext(), R.layout.layout_top_navigation,null);
         viewPager = (ViewPager) parentView.findViewById(R.id.inner_viewpager);
-        smartTabLayout = (SmartTabLayout) getActivity().findViewById(R.id.viewpagertab);
+        smartTabLayout = (SmartTabLayout) parentView.findViewById(R.id.viewpagertab);
         smartTabLayout.setVisibility(View.VISIBLE);
         pagerAdapter = initPagerAdapter();
         viewPager.setAdapter(pagerAdapter);
