@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -35,7 +37,7 @@ public class WebViewUrlActivty extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
         webView = (WebView) findViewById(R.id.webview);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
-
+        initToolBar();
         // Let's display the progress in the activity title bar, like the
         // browser app does.
 //        getWindow().requestFeature(Window.FEATURE_PROGRESS);
@@ -67,11 +69,24 @@ public class WebViewUrlActivty extends AppCompatActivity {
             @Override
             public void onResponse(Call<DailyWebBean> call, Response<DailyWebBean> response) {
                 webView.loadDataWithBaseURL("file:///android_asset/", "<link rel=\"stylesheet\" type=\"text/css\" href=\"dailycss.css\" />" + response.body().getBody(), "text/html", "utf-8", null);
+                getSupportActionBar().setTitle(response.body().getTitle());
             }
 
             @Override
             public void onFailure(Call<DailyWebBean> call, Throwable t) {
                 Toast.makeText(WebViewUrlActivty.this,"Load data error",Toast.LENGTH_SHORT);
+            }
+        });
+    }
+
+    private void initToolBar() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
     }
