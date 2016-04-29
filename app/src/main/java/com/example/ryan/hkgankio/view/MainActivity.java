@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.util.FragmentControler;
 import com.example.ryan.hkgankio.util.FragmentsType;
+import com.example.ryan.hkgankio.util.ToolBarControler;
+import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
@@ -30,8 +32,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private FragmentControler fragmentControler;
-    private FragmentsType currentFragmentsType;
-    private Map<FragmentsType, String> backstackIds = new HashMap();
+    private ToolBarControler toolBarControler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,16 @@ public class MainActivity extends AppCompatActivity
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolBarControler = new ToolBarControler(this,toolbar);
+        toolBarControler.setToolbarInfo(new ToolBarInfo.Builder().setToolBarContentText(getString(R.string.app_name)).build());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+    }
+    public void setToolBarInfo(ToolBarInfo info){
+        toolBarControler.setToolbarInfo(info);
     }
 
     @Override
