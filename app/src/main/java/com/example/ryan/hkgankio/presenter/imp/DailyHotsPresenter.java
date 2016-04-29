@@ -1,17 +1,11 @@
 package com.example.ryan.hkgankio.presenter.imp;
 
-import android.util.ArrayMap;
-
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.bean.HotnewBean;
-import com.example.ryan.hkgankio.bean.StoriesBean;
-import com.example.ryan.hkgankio.bean.TopStoriesBean;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.presenter.IPresenter;
-import com.example.ryan.hkgankio.view.base.IDailNewsFragment;
-import com.example.ryan.hkgankio.view.base.IDailyHotsFragment;
-
-import java.util.List;
+import com.example.ryan.hkgankio.view.daily.base.IDailNewsFragment;
+import com.example.ryan.hkgankio.view.daily.base.IDailyHotsFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;

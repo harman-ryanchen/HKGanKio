@@ -15,9 +15,8 @@ import com.example.ryan.hkgankio.bean.TopStoriesBean;
 import com.example.ryan.hkgankio.listener.OnRcvScrollListener;
 import com.example.ryan.hkgankio.presenter.IDailyNewsPresenter;
 import com.example.ryan.hkgankio.presenter.imp.DailyNewsPresenter;
-import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
 import com.example.ryan.hkgankio.support.DailyNewsListAdapter;
-import com.example.ryan.hkgankio.view.base.IDailNewsFragment;
+import com.example.ryan.hkgankio.view.daily.base.IDailNewsFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;

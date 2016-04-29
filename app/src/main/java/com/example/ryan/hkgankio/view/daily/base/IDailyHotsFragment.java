@@ -1,7 +1,6 @@
-package com.example.ryan.hkgankio.view.base;
+package com.example.ryan.hkgankio.view.daily.base;
 
 import com.example.ryan.hkgankio.bean.HotnewBean;
-import com.example.ryan.hkgankio.bean.StoriesBean;
 
 import java.util.List;
 

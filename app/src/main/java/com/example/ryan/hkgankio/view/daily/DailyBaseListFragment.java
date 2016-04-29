@@ -17,7 +17,7 @@ import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
-import com.example.ryan.hkgankio.view.HKApplication;
+import com.example.ryan.hkgankio.HKApplication;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

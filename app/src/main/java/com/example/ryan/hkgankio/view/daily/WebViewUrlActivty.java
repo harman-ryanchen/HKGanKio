@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio.view;
+package com.example.ryan.hkgankio.view.daily;
 
 import android.app.Activity;
 import android.os.Bundle;

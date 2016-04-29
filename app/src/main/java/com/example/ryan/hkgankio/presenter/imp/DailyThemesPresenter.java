@@ -1,14 +1,11 @@
 package com.example.ryan.hkgankio.presenter.imp;
 
-import android.widget.Toast;
-
 import com.example.ryan.hkgankio.api.DailyApiService;
-import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.presenter.IPresenter;
-import com.example.ryan.hkgankio.view.base.IDailyColumnsFragment;
-import com.example.ryan.hkgankio.view.base.IDailyThemesFragment;
+import com.example.ryan.hkgankio.view.daily.base.IDailyColumnsFragment;
+import com.example.ryan.hkgankio.view.daily.base.IDailyThemesFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
