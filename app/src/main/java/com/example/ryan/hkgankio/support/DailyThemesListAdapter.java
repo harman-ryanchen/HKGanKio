@@ -28,6 +28,11 @@ public class DailyThemesListAdapter extends BaseDailyListAdapter<ThemeBean.Other
         super(mItems, mContext);
     }
 
+    @Override
+    public void addItems(List<ThemeBean.OthersBean> othersBeen) {
+
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

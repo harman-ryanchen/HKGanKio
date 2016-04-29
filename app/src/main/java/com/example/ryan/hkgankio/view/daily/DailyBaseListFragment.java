@@ -16,6 +16,7 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.common.HKCommon;
+import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
 import com.example.ryan.hkgankio.view.HKApplication;
 
 import retrofit2.Retrofit;
@@ -28,7 +29,7 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected View mRootView;
     protected ProgressBar progressBar;
     protected RecyclerView recyclerView;
-    protected RecyclerView.Adapter adapter;
+    protected BaseDailyListAdapter adapter;
     protected LinearLayoutManager mLayoutManager;
     protected String mCategory;
     protected String mUrl;
@@ -53,6 +54,7 @@ public abstract class DailyBaseListFragment extends Fragment{
         mLayoutManager = new LinearLayoutManager(HKApplication.AppContext);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
+        initSpecail();
         showProgressBar();
         getArg();
         loadData();
@@ -65,7 +67,7 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
+    abstract void initSpecail();
     abstract void getArg();
     abstract void loadData();
-    abstract RecyclerView.Adapter bindAdapter();
 }

@@ -28,6 +28,11 @@ public class DailyColumnsListAdapter extends BaseDailyListAdapter<ColumnBean.Dat
         super(mItems, mContext);
     }
 
+    @Override
+    public void addItems(List<ColumnBean.DataBean> dataBeen) {
+
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

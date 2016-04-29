@@ -28,6 +28,11 @@ public class DailyHotNewsListAdapter extends BaseDailyListAdapter<HotnewBean.Rec
         super(mItems, mContext);
     }
 
+    @Override
+    public void addItems(List<HotnewBean.RecentBean> recentBeen) {
+
+    }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
