@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.support.PagerAdapter;
+import com.example.ryan.hkgankio.util.ToolBarInfo;
+import com.example.ryan.hkgankio.view.MainActivity;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 /**
@@ -33,6 +35,7 @@ public class DailyNavigationFragment extends Fragment{
         pagerAdapter = initPagerAdapter();
         viewPager.setAdapter(pagerAdapter);
         smartTabLayout.setViewPager(viewPager);
+        ((MainActivity)getActivity()).setToolBarInfo(new ToolBarInfo.Builder().setToolBarContentText("Daily Fragment").build());
         return parentView;
     }
     protected PagerAdapter initPagerAdapter() {

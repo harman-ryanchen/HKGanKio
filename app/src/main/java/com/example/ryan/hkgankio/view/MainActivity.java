@@ -16,10 +16,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ryan.hkgankio.R;
+import com.example.ryan.hkgankio.util.FragmentControler;
+import com.example.ryan.hkgankio.util.FragmentsType;
+import com.example.ryan.hkgankio.util.ToolBarControler;
+import com.example.ryan.hkgankio.util.ToolBarInfo;
+import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
+import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
+import com.example.ryan.hkgankio.view.setting.SettingFragment;
+import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private FragmentControler fragmentControler;
+    private ToolBarControler toolBarControler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +49,24 @@ public class MainActivity extends AppCompatActivity
         });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        swithFragment();
-
+        fragmentControler = new FragmentControler(getSupportFragmentManager(),R.id.framelayout);
+        if (savedInstanceState == null) {
+            fragmentControler.showMainFragment(new DailyNavigationFragment());
+        }
     }
 
     private void initToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        toolBarControler = new ToolBarControler(this,toolbar);
+        toolBarControler.setToolbarInfo(new ToolBarInfo.Builder().setToolBarContentText(getString(R.string.app_name)).build());
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+    }
+    public void setToolBarInfo(ToolBarInfo info){
+        toolBarControler.setToolbarInfo(info);
     }
 
     @Override
@@ -89,27 +108,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            fragmentControler.showMainFragment(new DailyNavigationFragment());
         } else if (id == R.id.nav_gallery) {
-
+            fragmentControler.showMainFragment(new GalleryFragment());
         } else if (id == R.id.nav_slideshow) {
-
+            fragmentControler.showMainFragment(new SlideshowFragment());
         } else if (id == R.id.nav_manage) {
-
+            fragmentControler.showMainFragment(new ToolsFragment());
         } else if (id == R.id.nav_share) {
-
+            fragmentControler.showMainFragment(new DailyNavigationFragment());
         } else if (id == R.id.nav_send) {
-
+            fragmentControler.showMainFragment(new SettingFragment());
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-    private void swithFragment(){
-         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        DailyNavigationFragment dailyNavigationFragment = new DailyNavigationFragment();
-        fragmentTransaction.replace(R.id.framelayout, dailyNavigationFragment);
-        fragmentTransaction.commit();
     }
 }

@@ -10,11 +10,8 @@ import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.example.ryan.hkgankio.bean.TopStoriesBean;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.presenter.IDailyNewsPresenter;
-import com.example.ryan.hkgankio.view.base.IDailNewsFragment;
-import com.orhanobut.logger.Logger;
+import com.example.ryan.hkgankio.view.daily.base.IDailNewsFragment;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;

@@ -1,6 +1,4 @@
-package com.example.ryan.hkgankio.view.base;
-
-import android.util.ArrayMap;
+package com.example.ryan.hkgankio.view.daily.base;
 
 import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.example.ryan.hkgankio.bean.TopStoriesBean;

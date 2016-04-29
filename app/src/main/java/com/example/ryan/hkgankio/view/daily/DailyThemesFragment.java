@@ -1,23 +1,13 @@
 package com.example.ryan.hkgankio.view.daily;
 
-import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
-
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.presenter.IPresenter;
-import com.example.ryan.hkgankio.presenter.imp.DailyColumnPresenter;
 import com.example.ryan.hkgankio.presenter.imp.DailyThemesPresenter;
-import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
-import com.example.ryan.hkgankio.support.DailyHotNewsListAdapter;
 import com.example.ryan.hkgankio.support.DailyThemesListAdapter;
-import com.example.ryan.hkgankio.view.base.IDailyThemesFragment;
+import com.example.ryan.hkgankio.view.daily.base.IDailyThemesFragment;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by studio02 on 4/25/16.

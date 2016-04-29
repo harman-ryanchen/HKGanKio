@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio.view;
+package com.example.ryan.hkgankio;
 
 import android.app.Application;
 import android.content.Context;
