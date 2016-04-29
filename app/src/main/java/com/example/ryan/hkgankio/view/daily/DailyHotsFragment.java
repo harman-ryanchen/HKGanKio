@@ -5,7 +5,12 @@ import android.widget.Toast;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.HotnewBean;
+import com.example.ryan.hkgankio.presenter.IPresenter;
+import com.example.ryan.hkgankio.presenter.imp.DailyHotsPresenter;
+import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
 import com.example.ryan.hkgankio.support.DailyHotNewsListAdapter;
+import com.example.ryan.hkgankio.support.DailyNewsListAdapter;
+import com.example.ryan.hkgankio.view.base.IDailyHotsFragment;
 
 import java.util.List;
 
@@ -16,9 +21,14 @@ import retrofit2.Response;
 /**
  * Created by studio02 on 4/25/16.
  */
-public class DailyHotsFragment extends DailyBaseListFragment{
+public class DailyHotsFragment extends DailyBaseListFragment implements IDailyHotsFragment{
 
-    private List<HotnewBean.RecentBean> recentBeen;
+    private IPresenter iPresenter;
+    @Override
+    void initSpecail() {
+        iPresenter = new DailyHotsPresenter(this);
+    }
+
     @Override
     void getArg() {
         mCategory =  getArguments().getString(getString(R.string.argument_item_id));
@@ -26,23 +36,24 @@ public class DailyHotsFragment extends DailyBaseListFragment{
 
     @Override
     void loadData() {
-        apiService.getHotNews().enqueue(new Callback<HotnewBean>() {
-            @Override
-            public void onResponse(Call<HotnewBean> call, Response<HotnewBean> response) {
-                hideProgressBar();
-                recentBeen = response.body().getRecent();
-                recyclerView.setAdapter(bindAdapter());
-            }
+       iPresenter.loadData();
+    }
 
-            @Override
-            public void onFailure(Call<HotnewBean> call, Throwable t) {
-                Toast.makeText(getContext(),"Load data error",Toast.LENGTH_SHORT);
-            }
-        });
+
+    @Override
+    public void refreshRecentBeen(List<HotnewBean.RecentBean> recentBeen) {
+        hideProgressBar();
+        if (adapter==null){
+            adapter = new DailyHotNewsListAdapter(recentBeen,getContext());
+            recyclerView.setAdapter(adapter);
+        }else{
+            adapter.addItems(recentBeen);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
-    RecyclerView.Adapter bindAdapter() {
-        return new DailyHotNewsListAdapter(recentBeen,getContext());
+    public void loadError(String error) {
+
     }
 }

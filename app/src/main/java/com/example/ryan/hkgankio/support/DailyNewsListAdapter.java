@@ -13,11 +13,11 @@ import android.widget.TextView;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.example.ryan.hkgankio.common.HKCommon;
-import com.example.ryan.hkgankio.view.daily.WebViewUrlActivty;
+import com.example.ryan.hkgankio.view.WebViewUrlActivty;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by studio02 on 4/25/16.
@@ -29,6 +29,13 @@ public class DailyNewsListAdapter extends BaseDailyListAdapter<StoriesBean, Dail
         super(mItems, mContext);
     }
 
+    @Override
+    public void addItems(List<StoriesBean> storiesBeen) {
+        if (mItems==null){
+            mItems = new ArrayList<>();
+        }
+        mItems.addAll(storiesBeen);
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

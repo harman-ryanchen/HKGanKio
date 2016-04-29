@@ -9,12 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
-import com.example.ryan.hkgankio.HKApplication;
+import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.api.DailyApiService;
 import com.example.ryan.hkgankio.common.HKCommon;
+import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
+import com.example.ryan.hkgankio.view.HKApplication;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -26,11 +29,13 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected View mRootView;
     protected ProgressBar progressBar;
     protected RecyclerView recyclerView;
-    protected RecyclerView.Adapter adapter;
+    protected BaseDailyListAdapter adapter;
     protected LinearLayoutManager mLayoutManager;
     protected String mCategory;
     protected String mUrl;
     protected DailyApiService apiService;
+    protected LinearLayout contentLayout;
+    protected ConvenientBanner convenientBanner;
 
 
     @Nullable
@@ -38,6 +43,8 @@ public abstract class DailyBaseListFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView = inflater.inflate(R.layout.fragment_daily, container, false);
         progressBar = (ProgressBar) mRootView.findViewById(R.id.progressbar);
+        contentLayout = (LinearLayout) mRootView.findViewById(R.id.content_layout);
+        convenientBanner = (ConvenientBanner) mRootView.findViewById(R.id.convenientBanner);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(HKCommon.daily_base_api)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -47,6 +54,7 @@ public abstract class DailyBaseListFragment extends Fragment{
         mLayoutManager = new LinearLayoutManager(HKApplication.AppContext);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(mLayoutManager);
+        initSpecail();
         showProgressBar();
         getArg();
         loadData();
@@ -59,7 +67,7 @@ public abstract class DailyBaseListFragment extends Fragment{
     protected void hideProgressBar(){
         progressBar.setVisibility(View.GONE);
     }
+    abstract void initSpecail();
     abstract void getArg();
     abstract void loadData();
-    abstract RecyclerView.Adapter bindAdapter();
 }

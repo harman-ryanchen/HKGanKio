@@ -5,6 +5,7 @@ import com.example.ryan.hkgankio.bean.DailyNewsBean;
 import com.example.ryan.hkgankio.bean.DailyWebBean;
 import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StartImageBean;
+import com.example.ryan.hkgankio.bean.StoriesBean;
 import com.example.ryan.hkgankio.bean.ThemeBean;
 
 import retrofit2.Call;
@@ -37,10 +38,10 @@ public interface DailyApiService {
     @GET("/api/3/sections")
     Call<ColumnBean> getDailysections();
 
-
+//    String daily_base_api = "http://news-at.zhihu.com/";
     //http://news.at.zhihu.com/api/4/news/before/20131119
-    @GET("/api/4/news/before/{date}")
-    Call<DailyNewsBean> getBeforeNews(@Path("beforedate") String beforedate );
+    @GET("api/4/news/before/{beforedate}")
+    Call<DailyNewsBean> getBeforeNews(@Path("beforedate") long beforedate );
 
 
     //http://news-at.zhihu.com/api/4/news/3892357

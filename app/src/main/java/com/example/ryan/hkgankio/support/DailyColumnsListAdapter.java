@@ -12,9 +12,8 @@ import android.widget.TextView;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.ColumnBean;
-import com.example.ryan.hkgankio.bean.ThemeBean;
 import com.example.ryan.hkgankio.common.HKCommon;
-import com.example.ryan.hkgankio.view.daily.WebViewUrlActivty;
+import com.example.ryan.hkgankio.view.WebViewUrlActivty;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -27,6 +26,11 @@ public class DailyColumnsListAdapter extends BaseDailyListAdapter<ColumnBean.Dat
 
     public DailyColumnsListAdapter(List<ColumnBean.DataBean> mItems, Context mContext) {
         super(mItems, mContext);
+    }
+
+    @Override
+    public void addItems(List<ColumnBean.DataBean> dataBeen) {
+
     }
 
 

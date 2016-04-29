@@ -5,7 +5,13 @@ import android.widget.Toast;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.bean.ThemeBean;
+import com.example.ryan.hkgankio.presenter.IPresenter;
+import com.example.ryan.hkgankio.presenter.imp.DailyColumnPresenter;
+import com.example.ryan.hkgankio.presenter.imp.DailyThemesPresenter;
+import com.example.ryan.hkgankio.support.BaseDailyListAdapter;
+import com.example.ryan.hkgankio.support.DailyHotNewsListAdapter;
 import com.example.ryan.hkgankio.support.DailyThemesListAdapter;
+import com.example.ryan.hkgankio.view.base.IDailyThemesFragment;
 
 import java.util.List;
 
@@ -16,9 +22,14 @@ import retrofit2.Response;
 /**
  * Created by studio02 on 4/25/16.
  */
-public class DailyThemesFragment extends DailyBaseListFragment{
+public class DailyThemesFragment extends DailyBaseListFragment implements IDailyThemesFragment{
 
-    private List<ThemeBean.OthersBean> themeBeen;
+    private IPresenter iPresenter;
+    @Override
+    void initSpecail() {
+        iPresenter = new DailyThemesPresenter(this);
+    }
+
     @Override
     void getArg() {
         mCategory =  getArguments().getString(getString(R.string.argument_item_id));
@@ -26,23 +37,23 @@ public class DailyThemesFragment extends DailyBaseListFragment{
 
     @Override
     void loadData() {
-        apiService.getDailyThemes().enqueue(new Callback<ThemeBean>() {
-            @Override
-            public void onResponse(Call<ThemeBean> call, Response<ThemeBean> response) {
-                hideProgressBar();
-                themeBeen = response.body().getOthers();
-                recyclerView.setAdapter( bindAdapter());
-            }
-
-            @Override
-            public void onFailure(Call<ThemeBean> call, Throwable t) {
-                Toast.makeText(getContext(),"Load data error",Toast.LENGTH_SHORT);
-            }
-        });
+        iPresenter.loadData();
     }
 
     @Override
-    RecyclerView.Adapter bindAdapter() {
-        return new DailyThemesListAdapter(themeBeen,getContext());
+    public void refreshThemeBeen(List<ThemeBean.OthersBean> themeBeen) {
+        hideProgressBar();
+        if (adapter==null){
+            adapter = new DailyThemesListAdapter(themeBeen,getContext());
+            recyclerView.setAdapter(adapter);
+        }else{
+            adapter.addItems(themeBeen);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void loadError(String error) {
+
     }
 }
