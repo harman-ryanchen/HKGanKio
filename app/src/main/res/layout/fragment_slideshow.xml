@@ -9,4 +9,12 @@
        android:gravity="center"
        android:text="this is slideshow fragment"
        />
+   <TextView
+       android:id="@+id/detail_fragment"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:gravity="center"
+       android:text="detail fragment"
+       android:padding="5dp"
+       />
 </FrameLayout>

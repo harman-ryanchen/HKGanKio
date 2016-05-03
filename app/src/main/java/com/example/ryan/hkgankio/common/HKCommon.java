@@ -28,4 +28,11 @@ public class HKCommon {
     public static String argument_detail_url_section_new = "news";
     public static String argument_detail_url_section_theme = "theme";
     public static String argument_detail_url_section_section = "section";
+
+
+    public static String TAG_DAILY = "TAG_DAILY";
+    public static String TAG_GALLERY = "TAG_GALLERY";
+    public static String TAG_SLIDESHOW = "TAG_SLIDESHOW";
+    public static String TAG_TOOL = "TAG_TOOL";
+    public static String TAG_SETTING = "TAG_SETTING";
 }

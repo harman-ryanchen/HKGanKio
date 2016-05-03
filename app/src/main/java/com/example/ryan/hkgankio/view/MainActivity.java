@@ -3,6 +3,7 @@ package com.example.ryan.hkgankio.view;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -16,8 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.util.FragmentControler;
-import com.example.ryan.hkgankio.util.FragmentsType;
+import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.util.ToolBarControler;
 import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
@@ -26,12 +26,8 @@ import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private FragmentControler fragmentControler;
     private ToolBarControler toolBarControler;
 
     @Override
@@ -49,9 +45,8 @@ public class MainActivity extends AppCompatActivity
         });
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        fragmentControler = new FragmentControler(getSupportFragmentManager(),R.id.framelayout);
         if (savedInstanceState == null) {
-            fragmentControler.showMainFragment(new DailyNavigationFragment());
+            switchFragment(HKCommon.TAG_DAILY);
         }
     }
 
@@ -108,21 +103,40 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
             // Handle the camera action
-            fragmentControler.showMainFragment(new DailyNavigationFragment());
+            switchFragment(HKCommon.TAG_DAILY);
         } else if (id == R.id.nav_gallery) {
-            fragmentControler.showMainFragment(new GalleryFragment());
+            switchFragment(HKCommon.TAG_GALLERY);
         } else if (id == R.id.nav_slideshow) {
-            fragmentControler.showMainFragment(new SlideshowFragment());
+            switchFragment(HKCommon.TAG_SLIDESHOW);
         } else if (id == R.id.nav_manage) {
-            fragmentControler.showMainFragment(new ToolsFragment());
+            switchFragment(HKCommon.TAG_TOOL);
         } else if (id == R.id.nav_share) {
-            fragmentControler.showMainFragment(new DailyNavigationFragment());
+            switchFragment(HKCommon.TAG_SETTING);
         } else if (id == R.id.nav_send) {
-            fragmentControler.showMainFragment(new SettingFragment());
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    private Fragment currentFragment;
+    private void switchFragment(String tag){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        currentFragment = fragmentManager.findFragmentByTag(tag);
+        if (currentFragment==null){
+            if (tag.equals(HKCommon.TAG_DAILY)){
+                currentFragment = new DailyNavigationFragment();
+            }else if (tag.equals(HKCommon.TAG_GALLERY)){
+                currentFragment = new GalleryFragment();
+            }else if (tag.equals(HKCommon.TAG_SLIDESHOW)){
+                currentFragment = new SlideshowFragment();
+            }else if (tag.equals(HKCommon.TAG_TOOL)){
+                currentFragment = new ToolsFragment();
+            }else if (tag.equals(HKCommon.TAG_SETTING)){
+                currentFragment = new SettingFragment();
+            }
+        }
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.framelayout, currentFragment,tag);
+        transaction.commit();
     }
 }
