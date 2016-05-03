@@ -1,5 +1,6 @@
 package com.example.ryan.hkgankio.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class FuLiBean {
         this.results = results;
     }
 
-    public static class ResultsBean {
+    public static class ResultsBean implements Serializable{
         private String _id;
         private String createdAt;
         private String desc;

@@ -1,7 +1,9 @@
 package com.example.ryan.hkgankio.view.gallery;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,7 @@ import com.example.ryan.hkgankio.view.MainActivity;
 import com.example.ryan.hkgankio.view.gallery.base.IGalleryFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,9 +86,21 @@ public class GalleryFragment extends Fragment implements IGalleryFragment {
         }
 
         @Override
-        public void onBindViewHolder(MeizhiListAdapter.ViewHolder holder, int position) {
+        public void onBindViewHolder(MeizhiListAdapter.ViewHolder holder, final int position) {
             holder.titleview.setText(mFuLiBeens.get(position).getDesc());
             holder.iv_meizhi.setImageURI(Uri.parse(mFuLiBeens.get(position).getUrl()));
+            holder.mItemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("meizhi", (Serializable) mFuLiBeens);
+                    bundle.putInt("position",position);
+                    Intent intent = new Intent(getContext(),GalleryActivity.class);
+                    intent.putExtras(bundle);
+                    getActivity().startActivity(intent);
+
+                }
+            });
         }
 
         @Override
@@ -99,19 +114,15 @@ public class GalleryFragment extends Fragment implements IGalleryFragment {
             SimpleDraweeView iv_meizhi;
 //            @BindView(R.id.tv_title)
             TextView titleview;
+            View mItemView;
 
 
             public ViewHolder(View itemView) {
                 super(itemView);
 //                ButterKnife.bind(this, itemView);
+                mItemView = itemView;
                 iv_meizhi = (SimpleDraweeView) itemView.findViewById(R.id.meizhi_image);
                 titleview = (TextView) itemView.findViewById(R.id.tv_title);
-                itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
             }
         }
     }
