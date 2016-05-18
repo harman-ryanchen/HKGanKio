@@ -1,5 +1,6 @@
 package com.example.ryan.hkgankio.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,6 +24,7 @@ import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
+import com.example.ryan.hkgankio.view.notification.NotificationActivity;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
 
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             switchFragment(HKCommon.TAG_SETTING);
         } else if (id == R.id.nav_send) {
+            startActivity(new Intent(this,NotificationActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
