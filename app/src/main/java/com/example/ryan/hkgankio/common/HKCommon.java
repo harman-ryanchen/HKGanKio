@@ -12,6 +12,8 @@ public class HKCommon {
     public static String daily_base_theme_api = "http://news-at.zhihu.com/api/4/theme/";
     public static String[] dailyItems = new String[]{"Dayily", "Hot", "Column", "Themes"};
 
+    public static String ganhuo_base_api = "http://gank.io/api/";
+
     //    http://news-at.zhihu.com/api/4/theme/11
 
     //    http://news-at.zhihu.com/api/3/section/1
