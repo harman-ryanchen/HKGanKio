@@ -25,6 +25,7 @@
         <activity android:name=".view.gallery.GalleryActivity"/>
         <activity android:name=".view.notification.NotificationActivity"/>
         <activity android:name=".sample.UnitTestSampleActivity"/>
+        <activity android:name=".designpattern.ActivityStatePattern"/>
         <service android:name=".service.PollingService"/>
     </application>
 
