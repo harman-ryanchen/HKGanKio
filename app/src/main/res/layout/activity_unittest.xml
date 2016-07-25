@@ -2,25 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     >
 
-
     <TextView
-        android:id="@+id/setupPicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="set a picturet on imageview"
-        android:gravity="center"
-        android:padding="5dp"
-        android:background="@color/blue"
+        android:id="@+id/unittest_tv"
+        android:text="this is unit test activity"
         />
 
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/image_iv"
+        android:id="@+id/content_panel"
         />
 
 </LinearLayout>

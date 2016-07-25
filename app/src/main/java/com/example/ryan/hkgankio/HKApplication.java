@@ -18,7 +18,7 @@ public class HKApplication extends Application{
         super.onCreate();
         AppContext = getApplicationContext();
         Fresco.initialize(AppContext);
-        LeakCanary.install(this);
+//        LeakCanary.install(this);
         Logger.d("fast");
     }
 }

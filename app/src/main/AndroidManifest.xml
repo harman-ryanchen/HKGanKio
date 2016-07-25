@@ -24,6 +24,7 @@
         <activity android:name=".view.daily.WebViewUrlActivty"/>
         <activity android:name=".view.gallery.GalleryActivity"/>
         <activity android:name=".view.notification.NotificationActivity"/>
+        <activity android:name=".sample.UnitTestSampleActivity"/>
         <service android:name=".service.PollingService"/>
     </application>
 
