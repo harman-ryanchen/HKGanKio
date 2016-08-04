@@ -27,6 +27,8 @@
         <activity android:name=".sample.UnitTestSampleActivity"/>
         <activity android:name=".designpattern.ActivityStatePattern"/>
         <activity android:name=".designpattern.adapt.ActivityAdaptPattern"/>
+        <activity android:name=".designpattern.strategy.ActivityStrategyPattern"/>
+
         <service android:name=".service.PollingService"/>
     </application>
 
