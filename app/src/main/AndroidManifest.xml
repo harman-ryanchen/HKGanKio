@@ -26,6 +26,7 @@
         <activity android:name=".view.notification.NotificationActivity"/>
         <activity android:name=".sample.UnitTestSampleActivity"/>
         <activity android:name=".designpattern.ActivityStatePattern"/>
+        <activity android:name=".designpattern.adapt.ActivityAdaptPattern"/>
         <service android:name=".service.PollingService"/>
     </application>
 
