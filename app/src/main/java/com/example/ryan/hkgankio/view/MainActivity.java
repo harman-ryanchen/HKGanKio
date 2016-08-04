@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.designpattern.ActivityStatePattern;
+import com.example.ryan.hkgankio.designpattern.adapt.ActivityAdaptPattern;
 import com.example.ryan.hkgankio.util.ToolBarControler;
 import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             switchFragment(HKCommon.TAG_SETTING);
         } else if (id == R.id.nav_send) {
-            startActivity(new Intent(this,ActivityStatePattern.class));
+            startActivity(new Intent(this,ActivityAdaptPattern.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
