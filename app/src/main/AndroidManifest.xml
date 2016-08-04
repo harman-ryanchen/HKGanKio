@@ -28,6 +28,7 @@
         <activity android:name=".designpattern.ActivityStatePattern"/>
         <activity android:name=".designpattern.adapt.ActivityAdaptPattern"/>
         <activity android:name=".designpattern.strategy.ActivityStrategyPattern"/>
+        <activity android:name=".designpattern.chainofresponsibity.ActivityChainOfResponsibity"/>
 
         <service android:name=".service.PollingService"/>
     </application>
