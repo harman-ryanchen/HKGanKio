@@ -5,11 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.designpattern.CloseState;
-import com.example.ryan.hkgankio.designpattern.ElevatorController;
-import com.example.ryan.hkgankio.designpattern.OpenState;
-import com.example.ryan.hkgankio.designpattern.ProcessState;
-import com.example.ryan.hkgankio.designpattern.StopProcessState;
 
 /**
  * Created by ryan on 7/25/16.

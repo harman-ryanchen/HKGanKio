@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio.designpattern;
+package com.example.ryan.hkgankio.designpattern.state;
 
 import com.orhanobut.logger.Logger;
 

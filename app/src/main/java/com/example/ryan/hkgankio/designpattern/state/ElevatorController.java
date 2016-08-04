@@ -1,10 +1,5 @@
-package com.example.ryan.hkgankio.designpattern;
+package com.example.ryan.hkgankio.designpattern.state;
 
-
-import android.os.Handler;
-import android.os.Message;
-
-import com.orhanobut.logger.Logger;
 
 /**
  * Created by ryan on 7/25/16.

@@ -1,4 +1,4 @@
-package com.example.ryan.hkgankio.designpattern;
+package com.example.ryan.hkgankio.designpattern.state;
 
 /**
  * Created by ryan on 7/25/16.

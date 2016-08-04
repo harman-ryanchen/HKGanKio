@@ -1,9 +1,7 @@
 package com.example.ryan.hkgankio.view;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -21,17 +19,12 @@ import android.view.MenuItem;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
-import com.example.ryan.hkgankio.designpattern.ActivityStatePattern;
-import com.example.ryan.hkgankio.designpattern.adapt.ActivityAdaptPattern;
-import com.example.ryan.hkgankio.designpattern.chainofresponsibity.ActivityChainOfResponsibity;
-import com.example.ryan.hkgankio.designpattern.strategy.ActivityStrategyPattern;
 import com.example.ryan.hkgankio.designpattern.template.ActivityTemplatePattern;
 import com.example.ryan.hkgankio.util.ToolBarControler;
 import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
-import com.example.ryan.hkgankio.view.notification.NotificationActivity;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
 

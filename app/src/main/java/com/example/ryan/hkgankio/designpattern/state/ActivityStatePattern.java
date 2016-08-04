@@ -1,10 +1,7 @@
-package com.example.ryan.hkgankio.designpattern;
+package com.example.ryan.hkgankio.designpattern.state;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.PersistableBundle;
 import android.view.View;
 
 import com.example.ryan.hkgankio.R;

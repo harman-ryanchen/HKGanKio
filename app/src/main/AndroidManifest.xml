@@ -25,7 +25,7 @@
         <activity android:name=".view.gallery.GalleryActivity"/>
         <activity android:name=".view.notification.NotificationActivity"/>
         <activity android:name=".sample.UnitTestSampleActivity"/>
-        <activity android:name=".designpattern.ActivityStatePattern"/>
+        <activity android:name=".designpattern.state.ActivityStatePattern"/>
         <activity android:name=".designpattern.adapt.ActivityAdaptPattern"/>
         <activity android:name=".designpattern.strategy.ActivityStrategyPattern"/>
         <activity android:name=".designpattern.chainofresponsibity.ActivityChainOfResponsibity"/>

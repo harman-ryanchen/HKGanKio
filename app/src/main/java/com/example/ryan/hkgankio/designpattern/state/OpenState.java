@@ -1,27 +1,26 @@
-package com.example.ryan.hkgankio.designpattern;
+package com.example.ryan.hkgankio.designpattern.state;
 
 import com.orhanobut.logger.Logger;
 
 /**
  * Created by ryan on 7/25/16.
  */
-public class CloseState implements Istate {
+public class OpenState implements Istate{
     @Override
     public boolean openDoor() {
-        Logger.e("电梯打开来了","TEST_DESIGN_PATTERN");
-        return true;
+        Logger.e("电梯已经开了","TEST_DESIGN_PATTERN");
+        return false;
     }
 
     @Override
     public boolean closeDoor() {
         Logger.e("电梯关起来了","TEST_DESIGN_PATTERN");
-        return false;
+        return true;
     }
 
     @Override
     public boolean process() {
-        Logger.e("电梯飞起来了","TEST_DESIGN_PATTERN");
-        return true;
+        return false;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class CloseState implements Istate {
     }
 //    @Override
 //    public void openDoor() {
-//        Logger.e("电梯打开来了","TEST_DESIGN_PATTERN");
+//        Logger.e("电梯已经开了","TEST_DESIGN_PATTERN");
 //    }
 //
 //    @Override
@@ -41,6 +40,6 @@ public class CloseState implements Istate {
 //
 //    @Override
 //    public void process() {
-//        Logger.e("电梯飞起来了","TEST_DESIGN_PATTERN");
+//
 //    }
 }
