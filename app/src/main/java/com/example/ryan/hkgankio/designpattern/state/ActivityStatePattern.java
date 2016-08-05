@@ -1,6 +1,7 @@
 package com.example.ryan.hkgankio.designpattern.state;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 
@@ -10,11 +11,6 @@ import com.example.ryan.hkgankio.R;
  * Created by ryan on 7/25/16.
  */
 public class ActivityStatePattern extends Activity {
-
-
-    public static int OPEN_THE_DOOR = 1;
-    public static int CLOSE_THE_DOOR = 2;
-    public static int PROCESS_THE_ELEVATOR = 3;
 
 
     @Override
