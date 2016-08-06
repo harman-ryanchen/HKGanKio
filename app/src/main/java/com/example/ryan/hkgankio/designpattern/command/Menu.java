@@ -9,27 +9,42 @@ import java.util.List;
 public class Menu implements IMenu {
     private Cooker cooker;
     private List<DishBean> dishBeens;
+    private int tableNum;
 
     public void setDishBeens(List<DishBean> dishBeens) {
         this.dishBeens = dishBeens;
+        cooker.setDishBeanList(dishBeens);
     }
 
-    public void setCooker(Cooker cooker) {
-        this.cooker = cooker;
+    public Menu() {
+        cooker = new Cooker();
+    }
+
+    public Menu(int tableNum) {
+        this.tableNum = tableNum;
+        cooker = new Cooker();
     }
 
     @Override
     public void execute() {
-
+        if (dishBeens!=null){
+            cooker.cookDish();
+        }
     }
 
     @Override
-    public void undo() {
-
+    public void undo(DishBean dishBean) {
+        if (dishBeens!=null){
+            cooker.undo(dishBean);
+        }
     }
 
     @Override
-    public void redo() {
-
+    public void redo(DishBean olddishBean, DishBean newdishBean) {
+        if (dishBeens!=null){
+            cooker.redo(olddishBean,newdishBean);
+        }
     }
+
+
 }

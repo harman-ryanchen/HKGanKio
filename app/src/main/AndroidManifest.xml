@@ -31,6 +31,7 @@
         <activity android:name=".designpattern.chainofresponsibity.ActivityChainOfResponsibity"/>
         <activity android:name=".designpattern.template.ActivityTemplatePattern"/>
         <activity android:name=".designpattern.facade.ActivityFacadePattern"/>
+        <activity android:name=".designpattern.command.ActivityCommandPattern"/>
 
         <service android:name=".service.PollingService"/>
     </application>

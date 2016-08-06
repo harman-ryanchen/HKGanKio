@@ -10,16 +10,21 @@ import java.util.List;
  * 接受者角色（Receiver）：Receiver是真正执行命令的对象。任何类都可能成为一个接收者，只要它能够实现命令要求实现的相应功能。
  */
 public class Cooker {
+    private List<DishBean> dishBeanList;
+
+    public void setDishBeanList(List<DishBean> dishBeanList) {
+        this.dishBeanList = dishBeanList;
+    }
 
     /**
      * Receiver 执行方法
-     * @param dishBeen 菜单里的菜
      */
-    public void cookDish(List<DishBean> dishBeen){
-        for (DishBean db : dishBeen){
-            if (!db.getFinish()){
+    public void cookDish() {
+        if (dishBeanList == null) return;
+        for (DishBean db : dishBeanList) {
+            if (!db.getFinish()) {
                 db.setFinish(true);
-                Logger.d("TEST_DESIGN_PATTERN dish name = %s, is finish = %s",db.getDishName(),db.getFinish());
+                Logger.d("TEST_DESIGN_PATTERN dish name = %s, is finish = %s", db.getDishName(), db.getFinish());
             }
         }
 
@@ -27,10 +32,29 @@ public class Cooker {
 
     /**
      * Receiver 撤销方法
-     * @param dishBeen
-     * @param index
      */
-    public void undo(List<DishBean> dishBeen, int index){
-
+    public void undo(DishBean dishBean) {
+        if (dishBeanList == null) return;
+        for (DishBean db : dishBeanList) {
+            if (!db.getFinish() && dishBeanList.contains(dishBean)) {
+                dishBeanList.remove(dishBean);
+                Logger.d("TEST_DESIGN_PATTERN undo dish name = %s, remove dish = %s", db.getDishName(), dishBean.getDishName());
+            }
+        }
     }
+
+    /**
+     * Receiver 更改方法
+     *
+     * @param olddishBean
+     * @param newDishbean
+     */
+    public void redo(DishBean olddishBean, DishBean newDishbean) {
+        if (dishBeanList == null) return;
+        dishBeanList.set(dishBeanList.indexOf(olddishBean), newDishbean);
+        for (DishBean db : dishBeanList) {
+            Logger.d("TEST_DESIGN_PATTERN redo dish name = %s", db.getDishName());
+        }
+    }
+
 }

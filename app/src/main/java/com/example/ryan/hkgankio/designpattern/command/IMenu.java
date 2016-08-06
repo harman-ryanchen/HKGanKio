@@ -15,10 +15,10 @@ public interface IMenu {
     /**
      * 撤销命令,这菜不要了
      */
-    void undo();
+    void undo(DishBean dishBean);
 
     /**
      * 更改命令, 这菜改一下
      */
-    void redo();
+    void redo(DishBean olddishBean,DishBean newdishBean);
 }
