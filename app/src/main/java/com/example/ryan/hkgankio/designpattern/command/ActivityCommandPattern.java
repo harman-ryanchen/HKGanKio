@@ -54,21 +54,37 @@ public class ActivityCommandPattern extends Activity implements View.OnClickList
         checkedTextView3.setOnClickListener(this);
         checkedTextView4.setOnClickListener(this);
     }
-
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.shaoya) {
-            if (checkedTextView3.isChecked()) {
-
+            if (!checkedTextView3.isChecked()) {
+                waiter.orderDish(getDishBean("shaoya"));
             } else {
-
+                waiter.undo(getDishBean("shaoya"));
             }
         } else if (v.getId() == R.id.xiaochaorou) {
-
+            if (!checkedTextView4.isChecked()) {
+                waiter.orderDish(getDishBean("xiaochaorou"));
+            } else {
+                waiter.undo(getDishBean("xiaochaorou"));
+            }
         } else if (v.getId() == R.id.boilingfish) {
-
+            if (!checkedTextView1.isChecked()) {
+                waiter.orderDish(getDishBean("boilingfish"));
+            } else {
+                waiter.undo(getDishBean("boilingfish"));
+            }
         } else if (v.getId() == R.id.steambaozi) {
-
+            if (!checkedTextView2.isChecked()) {
+                waiter.orderDish(getDishBean("steambaozi"));
+            } else {
+                waiter.undo(getDishBean("steambaozi"));
+            }
         }
+    }
+    private DishBean getDishBean(String name){
+        DishBean  dishBean = new DishBean();
+        dishBean.setDishName(name);
+        return dishBean;
     }
 }
