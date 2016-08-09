@@ -32,6 +32,7 @@
         <activity android:name=".designpattern.template.ActivityTemplatePattern"/>
         <activity android:name=".designpattern.facade.ActivityFacadePattern"/>
         <activity android:name=".designpattern.observer.ActivityObserverPattern"/>
+        <activity android:name=".designpattern.mediator.ActivityMeditorPattern"/>
 
         <service android:name=".service.PollingService"/>
     </application>
