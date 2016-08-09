@@ -33,6 +33,7 @@
         <activity android:name=".designpattern.facade.ActivityFacadePattern"/>
         <activity android:name=".designpattern.observer.ActivityObserverPattern"/>
         <activity android:name=".designpattern.mediator.ActivityMeditorPattern"/>
+        <activity android:name=".designpattern.proxy.ActivityProxyPattern"/>
 
         <service android:name=".service.PollingService"/>
     </application>
