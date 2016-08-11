@@ -13,7 +13,6 @@ public class Receiver extends Visitor {
     @Override
     void manage(Cargo cargo) {
         Logger.e("TEST_DESIGN_PATTERN 我是入货的,货物是 = %s", cargo.getCargoName());
-        cargo.produce();
     }
 
 }

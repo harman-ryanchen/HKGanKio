@@ -12,12 +12,14 @@ public class CheeseCargo extends Cargo{
     }
 
     @Override
-    void consume() {
+    void consume(Visitor visitor) {
         Logger.e("TEST_DESIGN_PATTERN 我是Cheese我被消耗掉了");
+        visitor.manage(this);
     }
 
     @Override
-    void produce() {
+    void produce(Visitor visitor) {
         Logger.e("TEST_DESIGN_PATTERN 我是Cheese我被生产出来了");
+        visitor.manage(this);
     }
 }

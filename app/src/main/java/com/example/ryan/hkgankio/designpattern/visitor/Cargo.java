@@ -15,6 +15,6 @@ public abstract class Cargo {
         return cargoName;
     }
 
-    abstract void consume();
-    abstract void produce();
+    abstract void consume(Visitor visitor);
+    abstract void produce(Visitor visitor);
 }

@@ -14,7 +14,6 @@ public class Deliver extends Visitor{
     @Override
     void manage(Cargo cargo) {
         Logger.e("TEST_DESIGN_PATTERN 我是出货的,货物是 = %s", cargo.getCargoName());
-        cargo.consume();
     }
 
 }

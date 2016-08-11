@@ -12,12 +12,14 @@ public class MilkCargo extends Cargo{
     }
 
     @Override
-    void consume() {
-        Logger.e("TEST_DESIGN_PATTERN 我是 Milk 我被消耗掉了");
+    void consume(Visitor visitor) {
+//        Logger.e("TEST_DESIGN_PATTERN 我是 Milk 我被消耗掉了");
+        visitor.manage(this);
     }
 
     @Override
-    void produce() {
-        Logger.e("TEST_DESIGN_PATTERN 我是 Milk 我被生产出来了");
+    void produce(Visitor visitor) {
+//        Logger.e("TEST_DESIGN_PATTERN 我是 Milk 我被生产出来了");
+        visitor.manage(this);
     }
 }

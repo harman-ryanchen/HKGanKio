@@ -12,8 +12,19 @@ public class Storage{
 
     public Storage() {
         cargoList.add(new CheeseCargo("cheese"));
-        cargoList.add(new CheeseCargo("cheese"));
-        cargoList.add(new CheeseCargo("cheese"));
-        cargoList.add(new CheeseCargo("cheese"));
+        cargoList.add(new CheeseCargo("cheese1"));
+        cargoList.add(new CheeseCargo("milk"));
+        cargoList.add(new CheeseCargo("milk2"));
     }
+    public void showConsumeBehaviour(Visitor visitor){
+        for (Cargo c: cargoList){
+            c.consume(visitor);
+        }
+    }
+    public void showDeliverBehaviour(Visitor visitor){
+        for (Cargo c: cargoList){
+            c.produce(visitor);
+        }
+    }
+
 }
