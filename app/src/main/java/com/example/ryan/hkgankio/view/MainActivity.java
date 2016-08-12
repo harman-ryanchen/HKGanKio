@@ -19,6 +19,7 @@ import android.view.MenuItem;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
+import com.example.ryan.hkgankio.designpattern.bridge.ActivityBridgeResponsibity;
 import com.example.ryan.hkgankio.designpattern.decorator.ActivityDecoratorPattern;
 import com.example.ryan.hkgankio.designpattern.facade.ActivityFacadePattern;
 import com.example.ryan.hkgankio.designpattern.mediator.ActivityMeditorPattern;
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             switchFragment(HKCommon.TAG_SETTING);
         } else if (id == R.id.nav_send) {
-            startActivity(new Intent(this,ActivityDecoratorPattern.class));
+            startActivity(new Intent(this,ActivityBridgeResponsibity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
