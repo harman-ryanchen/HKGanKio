@@ -36,6 +36,8 @@
         <activity android:name=".designpattern.proxy.ActivityProxyPattern"/>
         <activity android:name=".designpattern.decorator.ActivityDecoratorPattern"/>
         <activity android:name=".designpattern.bridge.ActivityBridgeResponsibity"/>
+        <activity android:name=".designpattern.composite.ActivityCompositePattern"/>
+        <activity android:name=".designpattern.visitor.ActivityVisitorPattern"/>
 
         <service android:name=".service.PollingService"/>
     </application>
