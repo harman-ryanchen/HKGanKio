@@ -1,7 +1,12 @@
 package com.example.ryan.hkgankio.api;
 
+import com.example.ryan.hkgankio.bean.ColumnBean;
 import com.example.ryan.hkgankio.bean.DailyNewsBean;
+import com.example.ryan.hkgankio.bean.DailyWebBean;
+import com.example.ryan.hkgankio.bean.HotnewBean;
 import com.example.ryan.hkgankio.bean.StartImageBean;
+import com.example.ryan.hkgankio.bean.StoriesBean;
+import com.example.ryan.hkgankio.bean.ThemeBean;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -23,13 +28,30 @@ public interface DailyApiService {
 
     //http://news-at.zhihu.com/api/3/news/hot
     @GET("/api/3/news/hot")
-    Call<DailyNewsBean> getHotNews();
+    Call<HotnewBean> getHotNews();
 
+    //http://news-at.zhihu.com/api/4/themes
+    @GET("/api/4/themes")
+    Call<ThemeBean> getDailyThemes();
 
+    //http://news-at.zhihu.com/api/3/sections
+    @GET("/api/3/sections")
+    Call<ColumnBean> getDailysections();
+
+//    String daily_base_api = "http://news-at.zhihu.com/";
     //http://news.at.zhihu.com/api/4/news/before/20131119
-    @GET("/api/4/news/before/{date}")
-    Call<DailyNewsBean> getBeforeNews(@Path("beforedate") String beforedate );
+    @GET("api/4/news/before/{beforedate}")
+    Call<DailyNewsBean> getBeforeNews(@Path("beforedate") long beforedate );
 
 
+    //http://news-at.zhihu.com/api/4/news/3892357
+//    @GET("/{parameter}")
+//    Call<DailyWebBean> getDetailBean(@Path("parameter") String parameter);
 
+    @GET("api/{num}/{section}/{id}")
+    Call<DailyWebBean> getDetailBean(@Path("num") String num,@Path("section") String section,@Path("id") int id);
+
+//    http://news-at.zhihu.com/api/4/theme/11
+
+//    http://news-at.zhihu.com/api/3/section/1
 }
