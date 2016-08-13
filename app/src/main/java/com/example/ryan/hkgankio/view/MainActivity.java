@@ -19,7 +19,11 @@ import android.view.MenuItem;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
+<<<<<<< HEAD
+import com.example.ryan.hkgankio.designpattern.bridge.ActivityBridgeResponsibity;
+=======
 import com.example.ryan.hkgankio.designpattern.composite.ActivityCompositePattern;
+>>>>>>> develop
 import com.example.ryan.hkgankio.designpattern.decorator.ActivityDecoratorPattern;
 import com.example.ryan.hkgankio.designpattern.facade.ActivityFacadePattern;
 import com.example.ryan.hkgankio.designpattern.mediator.ActivityMeditorPattern;
