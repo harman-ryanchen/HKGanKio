@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
@@ -27,6 +28,10 @@ import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,6 +55,13 @@ public class MainActivity extends AppCompatActivity
         if (savedInstanceState == null) {
             switchFragment(HKCommon.TAG_DAILY);
         }
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     private void initToolBar() {
@@ -141,5 +153,9 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.framelayout, currentFragment,tag);
         transaction.commit();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void reveiveMessage(String meesage){
+        Toast.makeText(this,"I get a meesage"+meesage,Toast.LENGTH_SHORT).show();
     }
 }
