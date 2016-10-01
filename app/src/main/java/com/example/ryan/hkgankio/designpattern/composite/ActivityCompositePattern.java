@@ -2,10 +2,8 @@ package com.example.ryan.hkgankio.designpattern.composite;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.ryan.hkgankio.R;
-import com.example.ryan.hkgankio.designpattern.decorator.Driver;
 
 /**
  * Created by ryan on 7/25/16.

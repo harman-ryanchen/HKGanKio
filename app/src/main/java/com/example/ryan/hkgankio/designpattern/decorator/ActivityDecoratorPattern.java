@@ -9,24 +9,20 @@ import com.example.ryan.hkgankio.designpattern.facade.AMTSystem;
 
 /**
  * Created by ryan on 7/25/16.
+ *
+ * 动态地给一个对象添加一些额外的职责。
  */
 public class ActivityDecoratorPattern extends Activity {
 
-    private Driver driver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decorator_pattern);
-        driver = new Driver();
-    }
-
-    public void drivetruck(View view) {
-        driver.driveTurck();
-    }
-
-    public void drivesportcar(View view) {
-        driver.driveSportCar();
+        EnginCar enginCar = new EnginCar();
+        Speaker speaker = new Speaker(enginCar);
+        SportCar sportCar = new SportCar(speaker);
+        speaker.run();
     }
 
 }

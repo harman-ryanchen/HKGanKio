@@ -40,6 +40,9 @@
         <activity android:name=".designpattern.visitor.ActivityVisitorPattern"/>
 
         <service android:name=".service.PollingService"/>
+        <service android:name=".service.MyAidlService"
+            android:process=":com.example.aidl"
+            />
     </application>
 
 </manifest>
