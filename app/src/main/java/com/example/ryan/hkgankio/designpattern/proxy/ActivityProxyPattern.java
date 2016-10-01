@@ -12,7 +12,7 @@ import com.example.ryan.hkgankio.designpattern.mediator.MediatorBoss;
 
 /**
  * Created by ryan on 7/25/16.
- * 中介者模式,就是把各种不同的要互相依赖的类整合在一起.
+ *为其它对象提供一种代理以控制对这个对象的访问。
  *
  
  *

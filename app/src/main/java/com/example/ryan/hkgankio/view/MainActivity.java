@@ -1,7 +1,12 @@
 package com.example.ryan.hkgankio.view;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.PersistableBundle;
+import android.os.RemoteException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -18,9 +23,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.ryan.hkgankio.IMyAidlInterface;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
 import com.example.ryan.hkgankio.designpattern.visitor.ActivityVisitorPattern;
+import com.example.ryan.hkgankio.service.MyAidlService;
 import com.example.ryan.hkgankio.util.ToolBarControler;
 import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
@@ -28,6 +35,7 @@ import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
+import com.orhanobut.logger.Logger;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -56,12 +64,39 @@ public class MainActivity extends AppCompatActivity
             switchFragment(HKCommon.TAG_DAILY);
         }
         EventBus.getDefault().register(this);
+        ininAidlService();
     }
+    private IMyAidlInterface iMyAidlInterface;
+    private  MyServiceConnection myServiceConnection;
+    private void ininAidlService() {
+        myServiceConnection = new MyServiceConnection();
+        bindService(new Intent(this, MyAidlService.class),myServiceConnection,BIND_AUTO_CREATE);
+    }
+    public class MyServiceConnection implements ServiceConnection {
+
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            iMyAidlInterface = IMyAidlInterface.Stub.asInterface(iBinder);
+            try {
+                Logger.d("TEST_AIDL_GETNAME = %s", iMyAidlInterface.getName());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+
+        }
+    }
+
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        unbindService(myServiceConnection);
     }
 
     private void initToolBar() {
@@ -86,6 +121,26 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
     }
 
     @Override
@@ -148,6 +203,11 @@ public class MainActivity extends AppCompatActivity
                 currentFragment = new ToolsFragment();
             }else if (tag.equals(HKCommon.TAG_SETTING)){
                 currentFragment = new SettingFragment();
+                try {
+                    iMyAidlInterface.setName("我随便按个东西洛");
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
         }
         FragmentTransaction transaction = fragmentManager.beginTransaction();
