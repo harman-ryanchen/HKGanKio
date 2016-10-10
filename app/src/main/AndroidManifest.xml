@@ -38,6 +38,7 @@
         <activity android:name=".designpattern.bridge.ActivityBridgeResponsibity"/>
         <activity android:name=".designpattern.composite.ActivityCompositePattern"/>
         <activity android:name=".designpattern.visitor.ActivityVisitorPattern"/>
+        <activity android:name=".view.rxandroid.RxAndroidActivity"/>
 
         <service android:name=".service.PollingService"/>
         <service android:name=".service.MyAidlService"
