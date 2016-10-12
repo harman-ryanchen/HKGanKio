@@ -33,7 +33,6 @@ public class DailyHotsFragment extends DailyBaseListFragment implements IDailyHo
 
     @Override
     public void refreshRecentBeen(List<HotnewBean.RecentBean> recentBeen) {
-        hideProgressBar();
         if (adapter==null){
             adapter = new DailyHotNewsListAdapter(recentBeen,getContext());
             recyclerView.setAdapter(adapter);

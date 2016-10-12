@@ -11,15 +11,6 @@ public class StoriesBean {
     private String ga_prefix;
     private String title;
     private List<String> images;
-    private String date;
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     public int getType() {
         return type;

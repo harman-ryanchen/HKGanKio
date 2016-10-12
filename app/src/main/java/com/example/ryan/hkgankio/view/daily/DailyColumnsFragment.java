@@ -34,7 +34,6 @@ public class DailyColumnsFragment extends DailyBaseListFragment implements IDail
 
     @Override
     public void refreshColumnBeen(List<ColumnBean.DataBean> columnBeen) {
-        hideProgressBar();
         if (adapter==null){
             adapter = new DailyColumnsListAdapter(columnBeen,getContext());
             recyclerView.setAdapter(adapter);

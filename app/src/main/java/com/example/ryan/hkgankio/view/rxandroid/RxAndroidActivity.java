@@ -22,6 +22,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import rx.subjects.BehaviorSubject;
 
 /**
  * Created by studio02 on 5/18/16.
@@ -189,5 +190,7 @@ public class RxAndroidActivity extends AppCompatActivity {
                 return Observable.from(persion.getHobbies());
             }
         }).subscribe(subscriber1);
+
+        BehaviorSubject subject = BehaviorSubject.create();
     }
 }
