@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/image_iv"
+        />
+
+    <TextView
+        android:id="@+id/observable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observable"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/blue"
+        />
+    <TextView
+        android:id="@+id/observer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="observer"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/blue"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/single_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="single_1"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/blue"
+        android:layout_marginTop="20dp"
+        />
+    <TextView
+        android:id="@+id/subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/blue"
+        android:layout_marginTop="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/schduler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="schduler"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@color/blue"
+
+            />
+        <TextView
+            android:id="@+id/schduler_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="stop"
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="@color/blue"
+            />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
