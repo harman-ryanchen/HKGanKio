@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.example.ryan.hkgankio.R;
+import com.example.ryan.hkgankio.bean.DailyNewsBean;
 import com.example.ryan.hkgankio.bean.StoriesBean;
-import com.example.ryan.hkgankio.bean.TopStoriesBean;
 import com.example.ryan.hkgankio.listener.OnRcvScrollListener;
 import com.example.ryan.hkgankio.presenter.IDailyNewsPresenter;
 import com.example.ryan.hkgankio.presenter.imp.DailyNewsPresenter;
@@ -53,7 +53,7 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IDailNew
         iDailyNewsPresenter.loadLaestNewsData();
     }
 
-    private void settleDataToConvenientBanner(List<TopStoriesBean> topStoriesBeen){
+    private void settleDataToConvenientBanner(List<DailyNewsBean.TopStoriesBean> topStoriesBeen){
         //自定义你的Holder，实现更多复杂的界面，不一定是图片翻页，其他任何控件翻页亦可。
         //网络加载例子
         convenientBanner.setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
@@ -70,14 +70,12 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IDailNew
 
 
     @Override
-    public void refreshLaestTopStories(List<TopStoriesBean> topStoriesBeen) {
-        hideProgressBar();
+    public void refreshLaestTopStories(List<DailyNewsBean.TopStoriesBean> topStoriesBeen) {
         settleDataToConvenientBanner(topStoriesBeen);
     }
 
     @Override
     public void refreshStories(List<StoriesBean> storiesBeen) {
-        hideProgressBar();
         if (adapter==null){
             adapter = new DailyNewsListAdapter(storiesBeen,getContext());
             recyclerView.setAdapter(adapter);
@@ -85,30 +83,21 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IDailNew
             adapter.addItems(storiesBeen);
             adapter.notifyDataSetChanged();
         }
+        mSwipeLayout.setRefreshing(false);
     }
 
     @Override
     public void loadError(String error) {
-
+        mSwipeLayout.setRefreshing(false);
     }
 
-
-    public class LocalImageHolderView implements Holder<Integer> {
-        private ImageView imageView;
-        @Override
-        public View createView(Context context) {
-            imageView = new ImageView(context);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            return imageView;
-        }
-
-        @Override
-        public void UpdateUI(Context context, final int position, Integer data) {
-            imageView.setImageResource(data);
-        }
+    @Override
+    public void onRefresh() {
+        super.onRefresh();
+        iDailyNewsPresenter.loadLaestNewsData();
     }
 
-    public class NetworkImageHolderView implements Holder<TopStoriesBean> {
+    public class NetworkImageHolderView implements Holder<DailyNewsBean.TopStoriesBean> {
         private SimpleDraweeView imageView;
         @Override
         public View createView(Context context) {
@@ -119,7 +108,7 @@ public class DailyNewsFragment extends DailyBaseListFragment implements IDailNew
         }
 
         @Override
-        public void UpdateUI(Context context, int position, TopStoriesBean data) {
+        public void UpdateUI(Context context, int position, DailyNewsBean.TopStoriesBean data) {
             imageView.setImageURI(Uri.parse(data.getImage()));
 
         }

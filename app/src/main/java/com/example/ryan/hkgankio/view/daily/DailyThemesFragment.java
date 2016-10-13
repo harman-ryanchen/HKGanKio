@@ -32,7 +32,6 @@ public class DailyThemesFragment extends DailyBaseListFragment implements IDaily
 
     @Override
     public void refreshThemeBeen(List<ThemeBean.OthersBean> themeBeen) {
-        hideProgressBar();
         if (adapter==null){
             adapter = new DailyThemesListAdapter(themeBeen,getContext());
             recyclerView.setAdapter(adapter);

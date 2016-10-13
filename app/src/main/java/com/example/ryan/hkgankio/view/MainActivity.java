@@ -33,6 +33,7 @@ import com.example.ryan.hkgankio.util.ToolBarInfo;
 import com.example.ryan.hkgankio.view.Tools.ToolsFragment;
 import com.example.ryan.hkgankio.view.daily.DailyNavigationFragment;
 import com.example.ryan.hkgankio.view.gallery.GalleryFragment;
+import com.example.ryan.hkgankio.view.rxandroid.RxAndroidActivity;
 import com.example.ryan.hkgankio.view.setting.SettingFragment;
 import com.example.ryan.hkgankio.view.slideshow.SlideshowFragment;
 import com.orhanobut.logger.Logger;
@@ -40,6 +41,10 @@ import com.orhanobut.logger.Logger;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import rx.Observable;
+import rx.Observer;
+import rx.Subscriber;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -182,7 +187,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_share) {
             switchFragment(HKCommon.TAG_SETTING);
         } else if (id == R.id.nav_send) {
-            startActivity(new Intent(this,ActivityVisitorPattern.class));
+            startActivity(new Intent(this,RxAndroidActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -218,4 +223,5 @@ public class MainActivity extends AppCompatActivity
     public void reveiveMessage(String meesage){
         Toast.makeText(this,"I get a meesage"+meesage,Toast.LENGTH_SHORT).show();
     }
+
 }
