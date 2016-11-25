@@ -5,13 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".HKApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,6 +21,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.daily.WebViewUrlActivty"/>
+        <activity android:name=".view.gallery.GalleryActivity"/>
+        <activity android:name=".view.notification.NotificationActivity"/>
+        <activity android:name=".sample.UnitTestSampleActivity"/>
+        <activity android:name=".designpattern.state.ActivityStatePattern"/>
+        <activity android:name=".designpattern.adapt.ActivityAdaptPattern"/>
+        <activity android:name=".designpattern.strategy.ActivityStrategyPattern"/>
+        <activity android:name=".designpattern.chainofresponsibity.ActivityChainOfResponsibity"/>
+        <activity android:name=".designpattern.template.ActivityTemplatePattern"/>
+        <activity android:name=".designpattern.facade.ActivityFacadePattern"/>
+        <activity android:name=".designpattern.observer.ActivityObserverPattern"/>
+        <activity android:name=".designpattern.mediator.ActivityMeditorPattern"/>
+        <activity android:name=".designpattern.proxy.ActivityProxyPattern"/>
+        <activity android:name=".designpattern.decorator.ActivityDecoratorPattern"/>
+        <activity android:name=".designpattern.bridge.ActivityBridgeResponsibity"/>
+        <activity android:name=".designpattern.composite.ActivityCompositePattern"/>
+        <activity android:name=".designpattern.visitor.ActivityVisitorPattern"/>
+        <activity android:name=".view.rxandroid.RxAndroidActivity"/>
+
+        <service android:name=".service.PollingService"/>
+        <service android:name=".service.MyAidlService"
+            android:process=":com.example.aidl"
+            />
     </application>
 
 </manifest>

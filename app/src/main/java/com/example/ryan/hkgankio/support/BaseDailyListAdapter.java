@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,6 +18,7 @@ public abstract class BaseDailyListAdapter <M,VH extends RecyclerView.ViewHolder
         this.mItems = mItems;
         this.mContext = mContext;
     }
+    public abstract void addItems(List<M> ms);
 
     protected M getItem(int position){
         return mItems.get(position);
