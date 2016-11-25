@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.ryan.hkgankio.IMyAidlInterface;
 import com.example.ryan.hkgankio.R;
 import com.example.ryan.hkgankio.common.HKCommon;
+import com.example.ryan.hkgankio.custom.CustomViewFragment;
 import com.example.ryan.hkgankio.designpattern.visitor.ActivityVisitorPattern;
 import com.example.ryan.hkgankio.service.MyAidlService;
 import com.example.ryan.hkgankio.util.ToolBarControler;
@@ -205,7 +206,8 @@ public class MainActivity extends AppCompatActivity
             }else if (tag.equals(HKCommon.TAG_SLIDESHOW)){
                 currentFragment = new SlideshowFragment();
             }else if (tag.equals(HKCommon.TAG_TOOL)){
-                currentFragment = new ToolsFragment();
+//                currentFragment = new ToolsFragment();
+                currentFragment = new CustomViewFragment();
             }else if (tag.equals(HKCommon.TAG_SETTING)){
                 currentFragment = new SettingFragment();
                 try {
