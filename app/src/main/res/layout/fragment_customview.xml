@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.ryan.hkgankio.custom.SimpleView3
+    <com.example.ryan.hkgankio.custom.SimpleView4
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
