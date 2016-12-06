@@ -236,6 +236,7 @@ public class SearchView extends View {
                 Path dct = new Path();
                 float stop = mPathMeasure.getLength() * animatorValue;
                 float start = (float) (stop - ((0.5 - Math.abs(animatorValue - 0.5)) * 200f));
+                Logger.d("TEST_CUSTOM_VIEW stop = %s , start = %s",stop,start);
                 mPathMeasure.getSegment(start, stop, dct, true);
                 canvas.drawPath(dct, mPaint);
                 break;
@@ -246,21 +247,6 @@ public class SearchView extends View {
                 canvas.drawPath(dst1, mPaint);
                 break;
         }
-
-
-//        canvas.drawPath(path_circle,mPaint);
-//        canvas.drawPath(path_search,mPaint);
-        //获取circle轨迹，以及截取
-//        canvas.drawPath(path_circle,mPaint);
-        Path dst = new Path();
-        mPathMeasure.setPath(path_circle, false);
-//        float stop = mPathMeasure.getLength() * animatorValue;
-//        float start = (float) (stop - 10);
-//        Logger.d("TEST_CUSTOM_VIEW path measure lenghth =%s , animatior value = %s stop = %s start = %s",mPathMeasure.getLength() ,animatorValue,stop,start);
-//        mPathMeasure.getSegment(start,stop,dst,true);
-//        mPaint.setColor(Color.WHITE);
-//        canvas.drawPath(dst,mPaint);
-
     }
 
 }
